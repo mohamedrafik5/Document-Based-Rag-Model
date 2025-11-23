@@ -1,0 +1,52 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+logs/
+*.sqlite3
+
+# FastAPI / Python packages
+*.egg-info/
+.eggs/
+
+# Streamlit specific
+.streamlit/
+
+# Model and vector database files
+models/
+vectorstore/
+index/
+*.bin
+*.pkl
+*.npy
+
+# Uploaded documents
+uploads/
+data/
+documents/
+
+# Environment variables and secrets
+.env
+*.env
+.env.*
+
+# Build/Distribution folders
+dist/
+build/
+
+/data/

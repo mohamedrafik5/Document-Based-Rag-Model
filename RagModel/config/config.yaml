@@ -1,0 +1,85 @@
+# =========================
+#  RAG SYSTEM CONFIG
+# =========================
+
+# app:
+#   name: "Local RAG System"
+#   mode: "pdf-chat"
+#   top_k: 3                # how many chunks to retrieve
+#   max_context_chars: 4000 # safety limit for Gemini prompt
+
+# paths:
+#   pdf_folder: "data/pdfs"
+#   vector_store: "data/faiss_index"
+#   cache_dir: "cache"
+
+# chunking:
+#   enabled: true
+#   chunk_size: 300         # tokens or words per chunk
+#   overlap: 30             # optional sliding window
+
+# embedding:
+#   model_name: "all-MiniLM-L6-v2"
+#   device: "cpu"           # "cuda" if using GPU
+
+# faiss:
+#   index_type: "flat"      # flat = L2 distance
+#   metric: "l2"
+#   save_index: true
+
+# llm:
+#   provider: "gemini"
+#   model: "gemini-2.5-pro" # or gemini-1.5-flash
+#   temperature: 0.7
+#   top_p: 0.9
+#   max_new_tokens: 200
+
+# genai:
+#   api_key_env: "GEMINI_API_KEY"  # read key from environment
+
+# logging:
+#   level: "INFO"
+#   save_logs: true
+#   log_file: "rag.log"
+
+
+
+
+gemini:
+  model_name : "llama-3.1-8b-instant"
+
+embedding:
+  model_name: "all-MiniLM-L6-v2"
+
+faiss:
+  faiss_path : "RagModel/data/faiss_db"
+
+files:
+  pdf_path : "RagModel/data/temp_pdf_store.pdf"
+  hash_file_path : "RagModel/data/file_hashe.txt"
+
+chunking:
+  enabled: true
+  chunk_size: 300
+  overlap: 30
+
+prompts :
+  main_prompt: |
+    You are an AI assistant that answers ONLY using the PDF context below.
+    Context:
+    {context}
+    Chat History:
+    {chat_history}
+    Question:
+    {question}
+    Answer:
+  refiner_prompt: |
+    You are an AI that rewrites user questions so they become standalone.
+    If the user question depends on previous context,
+    add the missing details using the chat history below.
+    Keep it short and precise.
+    Chat History:
+    {history}
+    User Query:
+    {user_query}
+    Rewritten Query:
