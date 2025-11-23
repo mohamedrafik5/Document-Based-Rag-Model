@@ -1,34 +1,3 @@
-# import os
-# import google.generativeai as genai
-
-# class ModelInvoker:
-    # def __init__(self, cfg):
-    #     self.cfg = cfg
-    #     self._init_llm()
-
-    # def _init_llm(self):
-    #     api_key = os.getenv(self.cfg.genai_api_key_env)
-    #     if not api_key:
-    #         raise ValueError(f"Missing env key: {self.cfg.genai_api_key_env}")
-
-    #     genai.configure(api_key=api_key)
-    #     self.model = genai.GenerativeModel(self.cfg.llm_model_name)
-
-    # def generate(self, prompt: str) -> str:
-    #     response = self.model.generate_content(
-    #         prompt,
-    #         generation_config={
-    #             "temperature": self.cfg.temperature,
-    #             "top_p": self.cfg.top_p,
-    #             "max_output_tokens": self.cfg.max_new_tokens,
-    #         }
-    #     )
-    #     return response.text
-
-
-
-
-
 from RagModel.utils.load_config import LoadConfig
 from RagModel.utils.db_manager import VectorDBManager
 from RagModel.utils.custom_memory import SummaryMemory
